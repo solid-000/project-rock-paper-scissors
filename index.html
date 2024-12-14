@@ -4,96 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .button-container{
+            display: flex;
+            padding: 10px;
+            gap: 5px;
+        }
+        .victory-message{
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    <script>
-        playGame();
+    <h1>Rock, Paper, Scissors!</h1>
+    <div class="button-container">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <div class="victory-message"></div>
+    <div class="round-status"></div>
+    <div class="score-board"></div>
+    
 
-        function playGame(){
-            let humanScore = 0;
-            let computerScore = 0;
-            let humanSelection;
-            let computerSelection ;
-            
-            
-            for (let i=0; i<5; i++) {
-                humanSelection = getHumanChoice();
-                computerSelection = getComputerChoice();
-                playRound(humanSelection, computerSelection);
-            }
-
-            console.log("");
-            if(humanScore > computerScore){
-                console.log("You win the game!!");
-            }else{
-                console.log("You lose the game!!");
-            }
-            console.log("Human Score: " + humanScore);
-            console.log("Computer Score: "+ computerScore);
-
-
-            function getComputerChoice(){
-                let choiceInNumber = Math.floor(Math.random() * 3);
-                let choice;
-                choice = (choiceInNumber===0) ? "rock" : (choiceInNumber===1) ? "paper" : "scissors";
-                return choice;
-            }
-            function getHumanChoice(){
-                let choiceBuffer = (prompt("rock, paper, scissors?")).toLowerCase();
-                if(choiceBuffer != "rock" && choiceBuffer != "paper" &&  choiceBuffer != "scissors"){
-                    alert("Invalid Input");
-                    getHumanChoice();
-                }else{
-                    let choice = choiceBuffer;
-                    return choice;
-                }
-            }
-            function playRound(humanChoice, computerChoice){
-                if(humanChoice=="rock"){
-                    switch (computerChoice){
-                        case "rock": 
-                            console.log("draw");
-                            break;
-                        case "paper":
-                            console.log("you lose, paper beats rock.");
-                            computerScore++;
-                            break;
-                        case "scissors":
-                            console.log("you win, rock beats scissors.");
-                            humanScore++;
-                            break;
-                    }   
-                }else if(humanChoice=="paper"){
-                    switch (computerChoice){
-                        case "rock": 
-                            console.log("you win, paper beats rock.");
-                            humanScore++;
-                            break;
-                        case "paper":
-                            console.log("draw");
-                            break;
-                        case "scissors":
-                            console.log("you lose, scissors beats paper.");
-                            computerScore++;
-                            break;
-                    }   
-                }else if(humanChoice=="scissors"){
-                    switch (computerChoice){
-                        case "rock": 
-                            console.log("you lose, rock beats scissors.");
-                            computerScore++;
-                            break;
-                        case "paper":
-                            console.log("you win, scissors beats paper.");
-                            humanScore++;
-                            break;
-                        case "scissors":
-                            console.log("draw");
-                            break;
-                    }   
-                }
-            }
-        }
-    </script>
+    <script src="javascript.js"></script>
 </body>
 </html>
